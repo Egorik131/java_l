@@ -7,6 +7,7 @@ public class main {
         }
         return res;
     }
+
     public static void main(String[] args) {
         System.out.println(Sum(10));
     }
