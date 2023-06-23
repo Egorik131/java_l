@@ -8,7 +8,7 @@ class RedBlackTree {
         Node left;
         Node right;
         Color color;
-        //boolean color; // true = RED, false = BLACK
+
     }
 
     enum Color {
@@ -17,7 +17,7 @@ class RedBlackTree {
     }
 
     public void insert(int value) {
-        if (root == null) {//обход начинаем с корня (он может быть пустой или нет)
+        if (root == null) {                         //обход начинаем с корня (он может быть пустой или нет)
             root = new Node();
             root.value = value;
             root.color = Color.BLACK;
@@ -26,22 +26,20 @@ class RedBlackTree {
             root = rebalance(root);
             root.color = Color.BLACK;
         }
-//        root.color = Color.BLACK;
-        //root.color = false;
     }
 
     private void insert(Node node, int value) {
         if (node.value != value) {
-            if (node.value < value) { // вставка вправо если выполняется
-                if (node.right == null) { // проверяем существование правой
-                    node.right = new Node(); // если пусто то создаем справа потомка
+            if (node.value < value) {               // вставка вправо если выполняется
+                if (node.right == null) {           // проверяем существование правой
+                    node.right = new Node();        // если пусто то создаем справа потомка
                     node.right.value = value;
                     node.right.color = Color.RED;
                 } else {
                     insert(node.right, value);
                     node.right = rebalance(node.right);
                 }
-            } else {                          // тоже самое слева
+            } else {                                  // тоже самое слева
                 if (node.left == null) {
                     node.left = new Node();
                     node.left.value = value;
@@ -112,13 +110,13 @@ class RedBlackTree {
     }
 
     private Node find(Node node, int value) {
-        if (node == null) {//если нода пустая но нулл
+        if (node == null) {                         //если нода пустая но нулл
             return null;
         }
         if (node.value == value) {
             return node;
         }
-        if (node.value < value) { //иначе классический бинарный поиск рекурсивный
+        if (node.value < value) {                   //иначе классический бинарный поиск рекурсивный
             return find(node.right, value);
         } else {
             return find(node.left, value);
@@ -139,7 +137,6 @@ public class rd_tree {
             System.out.print("Input a number: ");
             int num = in.nextInt();
             tree.insert(num);
-
         }
         in.close();
     }
